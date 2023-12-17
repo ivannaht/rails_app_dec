@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<main>
+  <div class="container">
+    <div class="row">
+      <!-- Card -->
+      <div class="col">
+        <div class="bg-image card shadow-1-strong w-100">
+          <div class="card-body">
+            <h2>Log in</h2>
+            <br>
+            <p class="card-text">
+              To get started, first enter your email and password
+            </p>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <!-- Email input -->
+              <div class="field form-group">
+                <%= f.label :email %>
+                <br/>
+                <%= f.email_field :email, class: "form-control w-50", autofocus: true, autocomplete: "email" %>
+              </div>
+              <br>
+              <!-- Password input -->
+              <div class="field form-group">
+                <%= f.label :password %>
+                <br/>
+                <%= f.password_field :password, class: "form-control w-50", autocomplete: "current-password" %>
+              </div>
+              <br>
+              <% if devise_mapping.rememberable? %>
+                <div class="field form-check">
+                  <%= f.check_box :remember_me, class: "form-check-input" %>
+                  <%= f.label :remember_me %>
+                </div>
+              <% end %>
+              <br>
+              <div class="actions">
+                <%= f.submit "Log in", class: "btn btn-info" %>
+              </div>
+            <% end %>
+            <br>
+            <%= render "devise/shared/links" %>
+            <br>
+          </div>
+        </div>
+        <!-- Card -->
+      </div>
+      <div class="col">
+        <p style="text-align:center;">
+          <%= image_tag("new/1.png", size: '500', :style => "vertical-align: middle; margin:5px;") %>
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+<br>

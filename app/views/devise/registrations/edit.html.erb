@@ -1,0 +1,81 @@
+<h2>Edit Profile </h2>
+<br>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="field form-group mb-3">
+          <%= f.label :photo %><br/>
+          <%= f.file_field :photo, accept: 'image/png,image/gif,image/jpeg', class: "form-control w-50" %>
+        </div>
+        <br>
+        <div class="field form-group">
+          <%= f.label :email %><br/>
+          <%= f.email_field :email, class: "form-control w-50", autofocus: true, autocomplete: "email" %>
+        </div>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+        <br>
+        <div class="field form-group">
+          <%= f.label :password %>
+          <i>(leave blank if you don't want to change it)</i>
+          <%= f.password_field :password, class: "form-control w-50", autocomplete: "new-password" %>
+        </div>
+        <br>
+        <div class="field form-group">
+          <%= f.label :password_confirmation %><br/>
+          <%= f.password_field :password_confirmation, class: "form-control w-50", autocomplete: "new-password" %>
+        </div>
+        <br>
+        <div class="field form-group">
+          <%= f.label :current_password %><br/>
+          <%= f.password_field :current_password, class: "form-control w-50", autocomplete: "current-password" %>
+        </div>
+        <p>
+        <div class="field form-check">
+          <%= f.check_box :admin, class: "form-check-input", autocomplete: "admin", style: "display:none" %>
+          <%= f.label :admin, style: "display:none" %>
+        </div>
+        </p>
+      </div>
+      <div class="col">
+        <div class="field form-group">
+          <%= f.label :first_name %><br/>
+          <%= f.text_field :first_name, class: "form-control w-50", autocomplete: "first_name" %>
+        </div>
+        <br>
+        <div class="field form-group">
+          <%= f.label :last_name %><br/>
+          <%= f.text_field :last_name, class: "form-control w-50", autocomplete: "last_name" %>
+        </div>
+        <br>
+        <div class="field form-group">
+          <%= f.label :nickname %><br/>
+          <%= f.text_field :nickname, class: "form-control w-50", autocomplete: "nickname" %>
+        </div>
+        <br>
+        <div class="field form-group">
+          <%= f.label :dob, "Date of birth" %><br/>
+          <%= f.date_field :dob, class: "form-control w-50", autocomplete: "dob" %>
+        </div>
+        <br>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-2">
+        <br>
+        <div class="actions">
+          <%= f.submit "Update", class: "btn btn-primary" %>
+        </div>
+<% end %>
+<br>
+<p><strong>Unhappy? </strong>
+  <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-outline-danger" %>
+</p>
+</div>
+</div>
+</div>
+<br/>
+<br/>
