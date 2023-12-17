@@ -280,7 +280,7 @@ DEPENDENCIES
   capybara
   cssbundling-rails
   debug
-  devise
+  devise (~> 4.9, >= 4.9.3)
   importmap-rails
   jbuilder
   pg (~> 1.5, >= 1.5.4)
