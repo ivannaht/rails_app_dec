@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<main style="background-color:#063561df;">
+  <!-- ======= Testimonials Section ======= -->
+  <section id="testimonials" class="testimonials section-bg">
+    <div class="container">
+      <div class="section-title">
+        <h2>User's details</h2>
+        <p>Here you can see the user`s info and talks</p>
+      </div>
+      <div class="testimonial-item">
+        <h3>
+          <strong><%= @user.first_name %></strong>
+          <strong><%= @user.last_name %></strong>
+        </h3>
+        <h4>
+          <strong><%= @user.nickname %></strong>
+        </h4>
+        <br>
+        <p>
+          <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+          Email: <%= @user.email %> |
+          Date of Birth: <%= @user.dob %> |
+          Age: <%= @user.calculate_age(@user.dob) %>
+          <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+        </p>
+        <%= image_tag(@user.photo, size: '300') if @user.photo.present? %>
+        <br>
+        <br>
+      </div>
+      <br>
+    </div>
+  </section>
+  <!-- End Testimonials Section -->
+  <p><br>
+  </p>
+</main>

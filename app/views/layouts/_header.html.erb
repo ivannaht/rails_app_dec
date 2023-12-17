@@ -10,9 +10,9 @@
         <li class="nav-item">
           <%= link_to "Home", root_path, class: "nav-link" %>
           <% if user_signed_in? %>
-<!--          <li class="nav-item">-->
-            <%#= link_to "Users", user_registration_path, class: "nav-link" %>
-<!--          <li class="nav-item">-->
+          <li class="nav-item">
+            <%= link_to "Users", user_registration_path, class: "nav-link" %>
+          <li class="nav-item">
             <%#= link_to "Talks", talks_path, class: "nav-link" %>
 <!--          <li class="nav-item">-->
             <%#= link_to "My Talks", my_talks_path, class: "nav-link" %>
@@ -37,9 +37,9 @@
       </form>
     </div>
   </div>
-  <%# if user_signed_in? %>
-    <%#= image_tag(current_user.photo, size: '50', :style => "border-radius: 30px; border: 1px solid grey; margin:5px;") if current_user.photo.present? %>
-<!--    <div class="navbar-brand"><%#= current_user.nickname %></div>-->
-  <%# end %>
+  <% if user_signed_in? %>
+    <%= image_tag(current_user.photo, size: '50', :style => "border-radius: 30px; border: 1px solid grey; margin:5px;") if current_user.photo.present? %>
+    <div class="navbar-brand"><%= current_user.nickname %></div>
+  <% end %>
 </nav>
 <!-- Header -->
