@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   validates :first_name, :last_name, :nickname, :dob, presence: true
-  validates :first_name, :last_name, format: {with: /[A-Za-z]{2,50}/}
-  validates :email, uniqueness: true, format: {with: /[a-z0-9_]{2,50}/}
+  validates :first_name, :last_name, format: { with: /[A-Za-z]{2,50}/ }
+  validates :email, uniqueness: true, format: { with: /[a-z0-9_]{2,50}/ }
   validate :validate_age
 
   def calculate_age(dob)
@@ -13,6 +13,7 @@ class User < ApplicationRecord
   end
 
   private
+
   def validate_age
     if dob.present? && dob > 18.years.ago.to_date
       errors.add(:dob, 'You should be over 18 years old.')
