@@ -1,7 +1,18 @@
 <div id="<%= dom_id talk %>">
+
+<!--  <p>-->
+<!--    <strong>User:</strong>-->
+    <%#= talk.user_id %>
+<!--  </p>-->
+
   <p>
-    <strong>Caption:</strong>
-    <%= talk.caption %>
+    <strong>Title:</strong>
+    <%= talk.title%>
+  </p>
+
+  <p>
+    <strong>Text:</strong>
+    <%= talk.text%>
   </p>
 
   <p>
@@ -15,8 +26,8 @@
   </p>
 
   <p>
-    <strong>User:</strong>
-    <%= talk.user_id %>
+    <strong>Photo:</strong>
+    <%= link_to photo.filename, photo%>
   </p>
 
   <p>

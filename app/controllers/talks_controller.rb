@@ -65,6 +65,6 @@ class TalksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def talk_params
-      params.require(:talk).permit(:caption, :longitude, :latitude, :user_id, :allow_comments, :show_likes_count)
+      params.require(:talk).permit(:longitude, :latitude, :title, :text, :photo, :theme, :user_id, :allow_comments, :show_likes_count)
     end
 end
