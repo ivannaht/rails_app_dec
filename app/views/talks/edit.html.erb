@@ -1,10 +1,9 @@
-<h1>Editing talk</h1>
-
-<%= render "form", talk: @talk %>
-
-<br>
-
-<div>
-  <%= link_to "Show this talk", @talk %> |
-  <%= link_to "Back to talks", talks_path %>
-</div>
+<section>
+  <div class="container">
+    <div class="section-title">
+      <h2>Editing Talk</h2>
+    </div>
+    <br>
+    <%= render 'form', talk: @talk %>
+  </div>
+</section>

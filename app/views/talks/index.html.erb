@@ -1,14 +1,40 @@
-<p style="color: green"><%= notice %></p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<h1>Talks</h1>
-
-<div id="talks">
-  <% @talks.each do |talk| %>
-    <%= render talk %>
-    <p>
-      <%= link_to "Show this talk", talk %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New talk", new_talk_path %>
+<section>
+  <div class="container">
+    <div class="section-title">
+      <h2>List of Talks</h2>
+    </div>
+    <div class="table-responsive-sm">
+      <table class=" table table-hover align-middle" style='font-size:80%; text-align:center'>
+        <thead class="table-light">
+        <tr vertical-align: middle>
+          <th>Title</th>
+          <th>Text</th>
+          <th>Photo</th>
+          <th>Theme</th>
+          <th>User</th>
+          <th colspan="4"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @talks.each do |talk| %>
+          <tr vertical-align: middle>
+            <td><%= talk.title %></td>
+            <td><%= truncate(talk.text, length: 190, omission: '...') %></td>
+            <td><%= image_tag(talk.photo, size: '150') if talk.photo.present? %></td>
+            <td><%= talk.theme if talk.theme.present? %></td>
+            <td><%= talk.user.nickname %></td>
+            <td><%= link_to 'View', talk, class: "btn btn-outline-primary" %></td>
+            <% if current_user.admin? %>
+              <td><%= link_to 'Edit', edit_talk_path(talk), class: "btn btn-outline-info" %></td>
+              <td><%= link_to 'Delete', talk, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %></td>
+            <% end %>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <br><br>
+  </div>
+</section>

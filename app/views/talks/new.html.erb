@@ -1,9 +1,12 @@
-<h1>New talk</h1>
-
-<%= render "form", talk: @talk %>
-
-<br>
-
+<section>
+  <div class="container">
+    <div class="section-title">
+      <h2>New Talk</h2>
+    </div>
+    <br>
+    <%= render 'form', talk: @talk %>
+  </div>
+</section>
 <div>
   <%= link_to "Back to talks", talks_path %>
 </div>
