@@ -8,6 +8,10 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, format: { with: /[a-z0-9_]{2,50}/ }
   validate :validate_age
 
+  #relationship
+  has_many :talks, dependent: :destroy
+  has_one_attached :photo
+
   def calculate_age(dob)
     ((Time.zone.now - dob.to_time) / 1.year.seconds).floor
   end
