@@ -1,0 +1,63 @@
+<%= form_with(model: talk) do |form| %>
+  <% if talk.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(talk.errors.count, "error") %> prohibited this talk from being saved:</h2>
+
+      <ul>
+        <% talk.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group w-50">
+    <% form.label :theme, "Theme" %>
+    <%= form.select :theme, ['Nature', 'Pets', 'Health', 'Lifestyle', 'Traveling', 'Science fiction', 'Technologies',
+                             'Education', 'Other'], :prompt => 'Select the theme...', class: "form-control w-50" %>
+  </div>
+
+  <div class="field form-group">
+    <% form.label :title %>
+    <%= form.text_field :title, class: "form-control w-100", placeholder: 'Title' %>
+  </div>
+
+  <div class="field form-group">
+    <% form.label :text %>
+    <%= form.text_area :text, class: "form-control w-100", :rows => 10, placeholder: 'Text' %>
+  </div>
+
+  <div class="field form-group mb-3">
+    <% form.label :photo %>
+    <%= form.file_field :photo, accept: 'image/png,image/gif,image/jpeg', class: "form-control w-50" %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :user_id, value: current_user.id, type: :hidden %>
+  </div>
+
+
+  <div>
+    <%= form.label :longitude, style: "display: block" %>
+    <%= form.text_field :longitude %>
+  </div>
+
+  <div>
+    <%= form.label :latitude, style: "display: block" %>
+    <%= form.text_field :latitude %>
+  </div>
+
+  <div>
+    <%= form.label :allow_comments, style: "display: block" %>
+    <%= form.check_box :allow_comments %>
+  </div>
+
+  <div>
+    <%= form.label :show_likes_count, style: "display: block" %>
+    <%= form.check_box :show_likes_count %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Save", class: "btn btn-primary" %>
+  </div>
+<% end %>
